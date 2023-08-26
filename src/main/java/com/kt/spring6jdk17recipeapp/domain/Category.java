@@ -1,27 +1,28 @@
 package com.kt.spring6jdk17recipeapp.domain;
 
-
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 /**
- * Created by kontelk on 8/25/23.
+ * Created by kontelk on 8/26/23.
  */
 
 @Entity
-public class Notes {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String description;
 
-    @OneToOne
-    private Recipe recipe;
-
-    @Lob
-    private String recipeNotes;
+    @ManyToMany(mappedBy = "categories")
+    private Set<Recipe> recipes;
 
 
     // ----------------- Getters and Setters -------------------
+
+
 
 
 
